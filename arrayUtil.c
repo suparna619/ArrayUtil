@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 typedef struct arrayUtil
 {
 	int *base;
@@ -8,26 +7,20 @@ typedef struct arrayUtil
 	int length;
 } ArrayUtil;
 
-
-int main()
-{
-	int i;
-	ArrayUtil a;
-	a.typeSize = sizeof(int);
-	printf("Enter the array length: \n");
-	scanf("%d",&a.length);
-	a.base = malloc(a.typeSize*a.length);
-	for (i = 0; i < a.length; ++i)
-	{
-		printf("Enter element at position %d : \n", i+1);
-		scanf("%d",&a.base[i]);
-		printf("%d\n", a.base[i]);
+int areEqualForArrayElements(ArrayUtil array1 , ArrayUtil array2){
+	int counter;
+	for(counter = 0;counter<array1.length; counter++){
+		if(array1.base[counter] != array2.base[counter]) 
+			break;
 	}
+	return (counter == array1.length)?1:0;
+}
 
-	for (i = 0; i < a.length; ++i)
-	{
-		printf("Element at position %d : %d\n",i+1,a.base[i]);
-	}
+int areEqualForTypesize(ArrayUtil array1 , ArrayUtil array2){
+	return (array1.typeSize == array2.typeSize) && areEqualForArrayElements(array1 , array2);
+	
+}
 
-	return 0;
+int areEqual( ArrayUtil array1 , ArrayUtil array2){
+	return (array1.length == array2.length) && areEqualForTypesize(array1 , array2);
 }

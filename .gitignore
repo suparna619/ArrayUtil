@@ -2,3 +2,6 @@ arrayUtil.exe
 arrayUtil.exe.core
 arrayUtil.o
 compile.sh
+arrayUtilTest.o
+arrayUtilTestRunner.c
+arrayUtilTestRunner.exe
