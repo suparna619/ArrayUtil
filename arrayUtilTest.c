@@ -67,3 +67,29 @@ void test_for_resize_an_existing_array_after_resizing_for_a_greater_size(){
 	assertEqual(((int *)result_array.base)[3],0);
 	assertEqual(((int *)result_array.base)[4],0);
 }
+
+void test_findIndex_retruns_the_index_of_an_element_in_array(){
+	int index;
+	int element=5;
+	ArrayUtil array = create(sizeof(int),4);
+	ArrayUtil array1;
+	((int *)array.base)[0]=1;
+	((int *)array.base)[1]=3;
+	((int *)array.base)[2]=5;
+	((int *)array.base)[3]=7;
+	index = findIndex(array, &element);
+	assertEqual(index,2);
+}
+
+void test_findIndex_retruns_negative1_for_an_element_which_is_not_in_the_array(){
+	int index;
+	int element=2;
+	ArrayUtil array = create(sizeof(int),4);
+	ArrayUtil array1;
+	((int *)array.base)[0]=1;
+	((int *)array.base)[1]=3;
+	((int *)array.base)[2]=5;
+	((int *)array.base)[3]=7;
+	index = findIndex(array, &element);
+	assertEqual(index,-1);
+}

@@ -33,14 +33,23 @@ ArrayUtil create(int typesize , int length){
 	return array;
 }
 
-ArrayUtil resize(ArrayUtil array, int length){
+ArrayUtil resize(ArrayUtil util, int length){
 	int counter;
-	int length_of_array = array.length;
-	array.length = length;
-	array.base = realloc(array.base,array.typeSize*length);
+	int length_of_array = util.length;
+	util.length = length;
+	util.base = realloc(util.base,util.typeSize*length);
 		for (counter = length_of_array; counter < length; ++counter)
 		{
-			array.base[counter] = 0;
+			util.base[counter] = 0;
 		}
-	return array;
+	return util;
+}
+
+int findIndex(ArrayUtil util, void* element){
+	int counter, *e = element;
+	for(counter = 0; counter < util.length; counter++){
+		if(util.base[counter] == *e)
+			return counter;
+	}
+	return -1;
 }
