@@ -1,6 +1,6 @@
 typedef struct arrayUtil
 {
-	int *base;
+	void *base;
 	int typeSize;
 	int length;
 } ArrayUtil;
@@ -12,3 +12,5 @@ ArrayUtil create(int typesize, int length);
 ArrayUtil resize(ArrayUtil array, int length);
 
 int findIndex(ArrayUtil util, void* element);
+
+void dispose(ArrayUtil util);

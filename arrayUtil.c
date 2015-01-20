@@ -1,19 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct arrayUtil
-{
-	int *base;
-	int typeSize;
-	int length;
-} ArrayUtil;
+#include "arrayUtil.h"
 
 int areEqualForArrayElements(ArrayUtil array1 , ArrayUtil array2){
 	int counter;
-	for(counter = 0;counter<array1.length; counter++){
-		if(array1.base[counter] != array2.base[counter]) 
-			break;
+	int maxLength = array1.length<=array2.length?(array2.length*array1.typeSize):(array1.length*array1.typeSize);
+	for(counter=0;counter<maxLength;counter++){
+		if(((char*) array1.base)[counter]!=((char*)array2.base)[counter]){
+			return 0;
+		}
 	}
-	return (counter == array1.length)?1:0;
+	return 1;
 }
 
 int areEqualForTypesize(ArrayUtil array1 , ArrayUtil array2){
@@ -40,16 +37,17 @@ ArrayUtil resize(ArrayUtil util, int length){
 	util.base = realloc(util.base,util.typeSize*length);
 		for (counter = length_of_array; counter < length; ++counter)
 		{
-			util.base[counter] = 0;
+			((int *)util.base)[counter] = 0;
 		}
 	return util;
 }
 
 int findIndex(ArrayUtil util, void* element){
-	int counter, *e = element;
-	for(counter = 0; counter < util.length; counter++){
-		if(util.base[counter] == *e)
-			return counter;
+	int counter; char *e = (char *)element;
+	char *array = (char *)util.base;
+	for(counter = 0; counter < util.length*util.typeSize; counter = counter+util.typeSize){
+		if(array[counter] == *e)
+			return counter/util.typeSize;
 	}
 	return -1;
 }

@@ -28,6 +28,32 @@ void test_for_equality_of_two_arrays_for_wrong_condition_by_size(){
 	assertEqual(areEqual(array1, array2), 0);
 }
 
+void test_areEqual_returns_1_when_elements_of_both_char_array_are_same(){
+	char arr1[] ={'s','u','p','a','r','n','a'};
+	char arr2[] ={'s','u','p','a','r','n','a'};
+	ArrayUtil array1 = {arr1, sizeof(char), 7};
+	ArrayUtil array2 = {arr2, sizeof(char), 7};
+	assertEqual(areEqual(array1,array2), 1);
+} 
+
+void test_areEqual_returns_1_when_elements_and_length_of_both_char_array_are_not_same(){
+	char arr1[] ={'s','u','p','a','r','n'};
+	char arr2[] ={'s','u','p','a','r','n','a'};
+	ArrayUtil array1 = {arr1, sizeof(char), 6};
+	ArrayUtil array2 = {arr2, sizeof(char), 7};
+	assertEqual(areEqual(array1,array2), 0);
+} 
+
+void test_creat_returns_new_ArraUtil_of_specified_size_and_length_and_set_all_element_to_zero(){
+	int counter;
+	ArrayUtil array = create(sizeof(int),5);
+	assertEqual(array.length,5);
+	assertEqual(array.typeSize,sizeof(int));
+	for(counter=0;counter<array.length;counter++){
+		assertEqual(((int *)array.base)[counter],0);
+	}
+}
+
 void test_for_create_new_array_in_utility_for_right_condition(){
 	ArrayUtil array;
 	array = create(sizeof(int), 4);
@@ -93,3 +119,15 @@ void test_findIndex_retruns_negative1_for_an_element_which_is_not_in_the_array()
 	index = findIndex(array, &element);
 	assertEqual(index,-1);
 }
+
+void test_it_return_indexof_2(){
+	char array[]= {'a','b','c','d'};
+	char element ='c';
+	int index;
+	ArrayUtil src;
+	src.base = array;
+	src.length = 4;
+	src.typeSize = sizeof(char);
+	index = findIndex(src,&element);
+	assertEqual(index,2);
+};
