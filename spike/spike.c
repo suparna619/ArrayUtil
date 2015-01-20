@@ -17,11 +17,10 @@ int main()
 	array[1] = 2;
 	array[2] = 3;
 
-	array = calloc(1,sizeof(int));
+	array = realloc(array,sizeof(int)*2);
 
-	for (i = 0; i < 3; ++i)
+	for (i = 0; i < 2; ++i)
 	{
-		// array[i] = 0;
 		printf("%d\n", array[i]);
 	}
 	free(array);
