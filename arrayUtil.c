@@ -24,3 +24,29 @@ int areEqualForTypesize(ArrayUtil array1 , ArrayUtil array2){
 int areEqual( ArrayUtil array1 , ArrayUtil array2){
 	return (array1.length == array2.length) && areEqualForTypesize(array1 , array2);
 }
+
+ArrayUtil create(int typesize , int length){
+	ArrayUtil *array;
+	int counter;
+	array = malloc(typesize*length);
+	(*array).length = length;
+	(*array).typeSize = typesize;
+	for(counter = 0;counter<length;counter++){
+		(*array).base[counter] = 0;
+	}
+	return *array;
+}
+
+ArrayUtil resize(ArrayUtil array, int length){
+	int counter;
+	int length_of_array = array.length;
+	array.length = length;
+	if(length_of_array < length){
+		for (counter = (array.length-length+1); counter < length; ++counter)
+		{
+			array.base[counter] = 0;
+		}
+	}
+
+	return array;
+}

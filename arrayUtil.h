@@ -5,4 +5,8 @@ typedef struct arrayUtil
 	int length;
 } ArrayUtil;
 
-int areEqual( ArrayUtil array1 , ArrayUtil array2);
+int areEqual(ArrayUtil array1, ArrayUtil array2);
+
+ArrayUtil create(int typesize, int length);
+
+ArrayUtil resize(ArrayUtil array, int length);

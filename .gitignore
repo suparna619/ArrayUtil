@@ -5,3 +5,6 @@ compile.sh
 arrayUtilTest.o
 arrayUtilTestRunner.c
 arrayUtilTestRunner.exe
+spike/run.sh
+spike/spike.exe
+spike/spike.o

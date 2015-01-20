@@ -11,23 +11,19 @@ typedef struct arrayUtil
 
 int main()
 {
-	int i;
-	ArrayUtil a;
-	a.typeSize = sizeof(int);
-	printf("Enter the array length: \n");
-	scanf("%d",&a.length);
-	a.base = malloc(a.typeSize*a.length);
-	for (i = 0; i < a.length; ++i)
-	{
-		printf("Enter element at position %d : \n", i+1);
-		scanf("%d",&a.base[i]);
-		printf("%d\n", a.base[i]);
-	}
+	int *array,i;
+	array = malloc(sizeof(int)*3);
+	array[0] = 1;
+	array[1] = 2;
+	array[2] = 3;
 
-	for (i = 0; i < a.length; ++i)
-	{
-		printf("Element at position %d : %d\n",i+1,a.base[i]);
-	}
+	array = calloc(1,sizeof(int));
 
+	for (i = 0; i < 3; ++i)
+	{
+		// array[i] = 0;
+		printf("%d\n", array[i]);
+	}
+	free(array);
 	return 0;
 }
