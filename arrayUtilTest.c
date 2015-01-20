@@ -94,7 +94,7 @@ void test_for_resize_an_existing_array_after_resizing_for_a_greater_size(){
 	assertEqual(((int *)result_array.base)[4],0);
 }
 
-void test_findIndex_retruns_the_index_of_an_element_in_array(){
+void test_findIndex_retruns_the_index_of_an_element_in_an_int_array(){
 	int index;
 	int element=5;
 	ArrayUtil array = create(sizeof(int),4);
@@ -120,7 +120,7 @@ void test_findIndex_retruns_negative1_for_an_element_which_is_not_in_the_array()
 	assertEqual(index,-1);
 }
 
-void test_it_return_indexof_2(){
+void test_findIndex_retruns_the_index_of_an_element_in_an_char_array(){
 	char array[]= {'a','b','c','d'};
 	char element ='c';
 	int index;
@@ -131,3 +131,10 @@ void test_it_return_indexof_2(){
 	index = findIndex(src,&element);
 	assertEqual(index,2);
 };
+
+void test_dispose_free_the_array(){
+	ArrayUtil array = create(sizeof(int),5);
+	assertEqual(((int*)array.base)[0],0);
+	assertEqual(((int*)array.base)[1],0);
+	dispose(array);
+}
