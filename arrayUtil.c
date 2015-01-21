@@ -87,3 +87,17 @@ void* findLast(ArrayUtil util, MatchFunc* match, void* hint){
 	}
 	return NULL;	
 }
+
+int count(ArrayUtil util, MatchFunc* match, void* hint){
+	int counter, matchedItem = 0;
+	void *item = malloc(util.typeSize);
+	char *base = (char *)util.base;
+	for (counter=0; counter < util.length; counter++){
+		
+		memcpy(item,&(base[counter*util.typeSize]),util.typeSize);
+		
+		if(match(hint,item))
+			matchedItem++;
+	}
+	return matchedItem;
+}

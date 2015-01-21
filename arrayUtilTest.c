@@ -291,3 +291,43 @@ void test_findLast_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
 	result=(int*)findLast(array,isDivisible,&hint);
  	assertEqual((int)result,0);
 }
+
+void test_count_retruns_2_if_two_even_numbers_are_present_in_the_array(){
+	ArrayUtil array = create(sizeof(int),5);
+	((int *)array.base)[0]=11;
+	((int *)array.base)[1]=22;
+	((int *)array.base)[2]=33;
+	((int *)array.base)[3]=44;
+	((int *)array.base)[4]=55;
+ 	assertEqual(count(array,isEven,0),2);
+}
+
+void test_count_retruns_0_if_no_even_number_is_present_in_the_array(){
+	ArrayUtil array = create(sizeof(int),5);
+	((int *)array.base)[0]=11;
+	((int *)array.base)[1]=33;
+	((int *)array.base)[2]=55;
+	((int *)array.base)[3]=77;
+	((int *)array.base)[4]=99;
+ 	assertEqual(count(array,isEven,0),0);
+}
+
+void test_count_retruns_3_if_three_elements_are_divisible_by_2_in_array(){
+	ArrayUtil array = create(sizeof(int),4);
+	int hint = 2;
+	((int *)array.base)[0]=3;
+	((int *)array.base)[1]=6;
+	((int *)array.base)[2]=8;
+	((int *)array.base)[3]=12;
+ 	assertEqual(count(array,isDivisible,&hint),3);
+}
+
+void test_count_retruns_0_if_no_elements_is_divisible_by_2_in_array(){
+	ArrayUtil array = create(sizeof(int),4);
+	int hint = 2;
+	((int *)array.base)[0]=3;
+	((int *)array.base)[1]=63;
+	((int *)array.base)[2]=81;
+	((int *)array.base)[3]=121;
+ 	assertEqual(count(array,isDivisible,&hint),0);
+}
