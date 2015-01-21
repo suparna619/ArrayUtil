@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "arrayUtil.h"
 
 int areEqualForArrayElements(ArrayUtil array1 , ArrayUtil array2){
 	int counter;
-	int maxLength = array1.length<=array2.length?(array2.length*array1.typeSize):(array1.length*array1.typeSize);
-	for(counter=0;counter<maxLength;counter++){
+	for(counter = 0; counter < array1.length*array1.typeSize; counter++){
 		if(((char*) array1.base)[counter]!=((char*)array2.base)[counter]){
 			return 0;
 		}
@@ -35,10 +35,10 @@ ArrayUtil resize(ArrayUtil util, int length){
 	int length_of_array = util.length;
 	util.length = length;
 	util.base = realloc(util.base,util.typeSize*length);
-		for (counter = length_of_array; counter < length; ++counter)
-		{
-			((int *)util.base)[counter] = 0;
-		}
+	for (counter = length_of_array; counter < length; ++counter)
+	{
+		((char *)util.base)[counter] = 0;
+	}
 	return util;
 }
 
@@ -56,4 +56,19 @@ void dispose(ArrayUtil util){
 	free(util.base);
 	util.length = 0;
 	util.typeSize = 0;
+}
+
+void* findFirst(ArrayUtil util, MatchFunc* match, void* hint){
+	int counter;
+	void *item = malloc(util.typeSize);
+	char *base = (char *)util.base;
+	for (counter=0; counter < util.length; counter++){
+		
+		memcpy(item,&(base[counter*util.typeSize]),util.typeSize);
+		
+		if(match(hint,item)){
+			return item;
+		}
+	}
+	return NULL;
 }
