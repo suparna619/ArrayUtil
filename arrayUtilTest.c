@@ -218,6 +218,7 @@ void test_findFirst_retruns_NULL_if_no_element_is_a_even_number_in_array(){
 int isDivisible(void* hint, void* item){
 	return ((*((int *)item)%*((int *)hint))==0);
 }
+
 void test_findFirst_retruns_first_element_which_is_divisible_by_5_in_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int *result;
@@ -239,5 +240,54 @@ void test_findFirst_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
 	((int *)array.base)[2]=8;
 	((int *)array.base)[3]=12;
 	result=(int*)findFirst(array,isDivisible,&hint);
+ 	assertEqual((int)result,0);
+}
+
+void test_findLast_retruns_last_even_number_from_the_array(){
+	ArrayUtil array = create(sizeof(int),5);
+	int *result;
+	((int *)array.base)[0]=11;
+	((int *)array.base)[1]=22;
+	((int *)array.base)[2]=33;
+	((int *)array.base)[3]=44;
+	((int *)array.base)[4]=55;
+	result=(int*)findLast(array,isEven,0);
+ 	assertEqual(*result,44);
+}
+
+void test_findLast_retruns_NULL_if_no_element_is_a_even_number_in_array(){
+	ArrayUtil array = create(sizeof(int),6);
+	int *result;
+	((int *)array.base)[0]=11;
+	((int *)array.base)[1]=33;
+	((int *)array.base)[2]=55;
+	((int *)array.base)[3]=77;
+	((int *)array.base)[4]=99;
+	((int *)array.base)[5]=111;
+	result=(int*)findLast(array,isEven,0);
+ 	assertEqual((int)result,0);
+}
+
+void test_findLast_retruns_first_element_which_is_divisible_by_5_in_array(){
+	ArrayUtil array = create(sizeof(int),4);
+	int *result;
+	int hint = 5;
+	((int *)array.base)[0]=2;
+	((int *)array.base)[1]=4;
+	((int *)array.base)[2]=5;
+	((int *)array.base)[3]=10;
+	result=(int*)findLast(array,isDivisible,&hint);
+ 	assertEqual(*result,10);
+}
+
+void test_findLast_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
+	ArrayUtil array = create(sizeof(int),4);
+	int *result;
+	int hint = 5;
+	((int *)array.base)[0]=3;
+	((int *)array.base)[1]=6;
+	((int *)array.base)[2]=8;
+	((int *)array.base)[3]=12;
+	result=(int*)findLast(array,isDivisible,&hint);
  	assertEqual((int)result,0);
 }

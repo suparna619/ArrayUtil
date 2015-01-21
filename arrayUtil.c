@@ -72,3 +72,18 @@ void* findFirst(ArrayUtil util, MatchFunc* match, void* hint){
 	}
 	return NULL;
 }
+
+void* findLast(ArrayUtil util, MatchFunc* match, void* hint){
+	int counter;
+	void *item = malloc(util.typeSize);
+	char *base = (char *)util.base;
+	for (counter = util.length-1; counter >=0 ; counter--){
+		
+		memcpy(item,&(base[counter*util.typeSize]),util.typeSize);
+		
+		if(match(hint,item)){
+			return item;
+		}
+	}
+	return NULL;	
+}
