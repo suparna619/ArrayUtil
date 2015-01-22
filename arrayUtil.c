@@ -3,8 +3,9 @@
 #include <string.h>
 #include "arrayUtil.h"
 
+int counter;
+
 int areEqualForArrayElements(ArrayUtil array1 , ArrayUtil array2){
-	int counter;
 	for(counter = 0; counter < array1.length*array1.typeSize; counter++){
 		if(((char*) array1.base)[counter]!=((char*)array2.base)[counter]){
 			return 0;
@@ -31,19 +32,13 @@ ArrayUtil create(int typesize , int length){
 }
 
 ArrayUtil resize(ArrayUtil util, int length){
-	int counter;
-	int length_of_array = util.length;
-	util.length = length;
-	util.base = realloc(util.base,util.typeSize*length);
-	for (counter = length_of_array; counter < length; ++counter)
-	{
-		((char *)util.base)[counter] = 0;
-	}
-	return util;
+	ArrayUtil new_util = create(util.typeSize, length);
+	memcpy(new_util.base, util.base, util.length*util.typeSize);
+	return new_util;
 }
 
 int findIndex(ArrayUtil util, void* element){
-	int counter; char *e = (char *)element;
+	char *e = (char *)element;
 	char *array = (char *)util.base;
 	for(counter = 0; counter < util.length*util.typeSize; counter = counter+util.typeSize){
 		if(array[counter] == *e)
@@ -59,13 +54,10 @@ void dispose(ArrayUtil util){
 }
 
 void* findFirst(ArrayUtil util, MatchFunc* match, void* hint){
-	int counter;
 	void *item = malloc(util.typeSize);
 	char *base = (char *)util.base;
 	for (counter=0; counter < util.length; counter++){
-		
 		memcpy(item,&(base[counter*util.typeSize]),util.typeSize);
-		
 		if(match(hint,item)){
 			return item;
 		}
@@ -74,13 +66,10 @@ void* findFirst(ArrayUtil util, MatchFunc* match, void* hint){
 }
 
 void* findLast(ArrayUtil util, MatchFunc* match, void* hint){
-	int counter;
 	void *item = malloc(util.typeSize);
 	char *base = (char *)util.base;
 	for (counter = util.length-1; counter >=0 ; counter--){
-		
 		memcpy(item,&(base[counter*util.typeSize]),util.typeSize);
-		
 		if(match(hint,item)){
 			return item;
 		}
@@ -89,13 +78,11 @@ void* findLast(ArrayUtil util, MatchFunc* match, void* hint){
 }
 
 int count(ArrayUtil util, MatchFunc* match, void* hint){
-	int counter, matchedItem = 0;
+	int matchedItem = 0;
 	void *item = malloc(util.typeSize);
 	char *base = (char *)util.base;
 	for (counter=0; counter < util.length; counter++){
-		
 		memcpy(item,&(base[counter*util.typeSize]),util.typeSize);
-		
 		if(match(hint,item))
 			matchedItem++;
 	}

@@ -5,54 +5,54 @@
 
 
 
-void test_for_equality_of_two_int_arrays_for_right_condition(){
-	int arr1[] ={1,2,3};
+void test__areEqual_01__for_equality_of_two_int_arrays_for_right_condition(){
+	int arr1[] = {1,2,3};
 	int arr2[] = {1,2,3}; 
 	ArrayUtil array1 = {arr1, sizeof(int), 3};
 	ArrayUtil array2 = {arr2, sizeof(int), 3};
 	assertEqual(areEqual(array1, array2) , 1);
 }
 
-void test_for_equality_of_two_float_arrays_for_right_condition(){
-	float arr1[] ={1.2,2.9,3.8};
+void test__areEqual_02__for_equality_of_two_float_arrays_for_right_condition(){
+	float arr1[] = {1.2,2.9,3.8};
 	float arr2[] = {1.2,2.9,3.8}; 
 	ArrayUtil array1 = {arr1, sizeof(float), 3};
 	ArrayUtil array2 = {arr2, sizeof(float), 3};
 	assertEqual(areEqual(array1, array2) , 1);
 }
 
-void test_for_equality_of_two_char_arrays_for_right_condition(){
-	char arr1[] ={'a','b','c'};
-	char arr2[] = {'a','b','c'}; 
+void test__areEqual_03__for_equality_of_two_char_arrays_for_right_condition(){
+	char arr1[] = "Sup";
+	char arr2[] = "Sup"; 
 	ArrayUtil array1 = {arr1, sizeof(char), 3};
 	ArrayUtil array2 = {arr2, sizeof(char), 3};
 	assertEqual(areEqual(array1, array2) , 1);
 }
 
-void test_for_equality_of_two_char_arrays_for_wrong_condition_by_element(){
-	char arr1[] = "sup";
-	char arr2[] = "sil"; 
+void test__areEqual_04__for_equality_of_two_char_arrays_for_wrong_condition_by_element(){
+	char arr1[] = "Sup";
+	char arr2[] = "Sid"; 
 	ArrayUtil array1 = {arr1, sizeof(char), 3};
 	ArrayUtil array2 = {arr2, sizeof(char), 3};
 	assertEqual(areEqual(array1, array2) , 0);
 }
 
-void test_for_equality_of_two_double_arrays_for_right_condition(){
-	double arr1[] ={1,2,3};
+void test__areEqual_05__for_equality_of_two_double_arrays_for_right_condition(){
+	double arr1[] = {1,2,3};
 	double arr2[] = {1,2,3}; 
 	ArrayUtil array1 = {arr1, sizeof(double), 3};
 	ArrayUtil array2 = {arr2, sizeof(double), 3};
 	assertEqual(areEqual(array1, array2) , 1);
 }
-void test_for_equality_of_two_arrays_for_wrong_condition_by_element(){
-	int arr1[] ={1,2,3};
+void test__areEqual_06__for_equality_of_two_arrays_for_wrong_condition_by_element(){
+	int arr1[] = {1,2,3};
 	int arr2[] = {1,5,3}; 
 	ArrayUtil array1 = {arr1, sizeof(int), 3};
 	ArrayUtil array2 = {arr2, sizeof(int), 3};
 	assertEqual(areEqual(array1, array2) , 0);
 }
 
-void test_for_equality_of_two_arrays_for_wrong_condition_by_size(){
+void test__areEqual_07__for_equality_of_two_arrays_for_wrong_condition_by_size(){
 	int arr1[] = {1,2,3};
 	int arr2[] = {1,2,3,4}; 
 	ArrayUtil array1 = {arr1, sizeof(int), 3};
@@ -60,23 +60,23 @@ void test_for_equality_of_two_arrays_for_wrong_condition_by_size(){
 	assertEqual(areEqual(array1, array2), 0);
 }
 
-void test_areEqual_returns_1_when_elements_of_both_char_array_are_same(){
-	char arr1[] = {'s','u','p','a','r','n','a'};
-	char arr2[] = {'s','u','p','a','r','n','a'};
+void test__areEqual_08__areEqual_returns_1_when_elements_of_both_char_array_are_same(){
+	char arr1[] = "Suparna";
+	char arr2[] = "Suparna";
 	ArrayUtil array1 = {arr1, sizeof(char), 7};
 	ArrayUtil array2 = {arr2, sizeof(char), 7};
 	assertEqual(areEqual(array1,array2), 1);
 } 
 
-void test_areEqual_returns_1_when_elements_and_length_of_both_char_array_are_not_same(){
-	char arr1[] = {'s','u','p','a','r','n'};
-	char arr2[] = {'s','u','p','a','r','n','a'};
+void test__areEqual_09__areEqual_returns_1_when_elements_and_length_of_both_char_array_are_not_same(){
+	char arr1[] = "Suparn";
+	char arr2[] = "Suparna";
 	ArrayUtil array1 = {arr1, sizeof(char), 6};
 	ArrayUtil array2 = {arr2, sizeof(char), 7};
 	assertEqual(areEqual(array1,array2), 0);
 }
 
-void test_areEqual_returns_0_when_the_elements_of_two_array_of_double_type_are_not_same(){
+void test__areEqual_10__areEqual_returns_0_when_the_elements_of_two_array_of_double_type_are_not_same(){
 	double arr1[] = {1.3,2.5,5.6};
 	double arr2[] = {1.3,2.5,5.5};
 	ArrayUtil array1 = {arr1, sizeof(double),3};
@@ -84,7 +84,7 @@ void test_areEqual_returns_0_when_the_elements_of_two_array_of_double_type_are_n
 	assertEqual(areEqual(array1,array2), 0);
 }
 
-void test_areEqual_returns_0_when_lengths_of_two_array_of_double_type_are_unequal(){
+void test__areEqual_11__areEqual_returns_0_when_lengths_of_two_array_of_double_type_are_unequal(){
 	double arr1[] = {1.3,2.5,5.6};
 	double arr2[] = {1.3,2.5};
 	ArrayUtil array1 = {arr1, sizeof(double),3};
@@ -92,27 +92,43 @@ void test_areEqual_returns_0_when_lengths_of_two_array_of_double_type_are_unequa
 	assertEqual(areEqual(array1,array2), 0);
 } 
 
-void test_creat_returns_new_ArraUtil_of_specified_size_and_length_and_set_all_element_to_zero(){
+void test__create_01__creat_returns_new_ArraUtil_of_specified_size_and_length_with_int_type_base_and_set_all_element_to_zero(){
 	int counter;
 	ArrayUtil array = create(sizeof(int),5);
 	assertEqual(array.length,5);
 	assertEqual(array.typeSize,sizeof(int));
-	for(counter=0;counter<array.length;counter++){
+	for(counter=0;counter<array.length;counter++)
 		assertEqual(((int *)array.base)[counter],0);
-	}
 }
 
-void test_for_create_new_array_in_utility_for_right_condition(){
-	ArrayUtil array;
-	array = create(sizeof(int), 4);
-	assertEqual(array.length, 4);
-	assertEqual(((int *)array.base)[0],0);
-	assertEqual(((int *)array.base)[1],0);
-	assertEqual(((int *)array.base)[2],0);
-	assertEqual(((int *)array.base)[3],0);
+void test__create_02__creat_returns_new_ArraUtil_of_specified_size_and_length_with_char_type_base_and_set_all_element_to_zero(){
+	int counter;
+	ArrayUtil array = create(sizeof(char),5);
+	assertEqual(array.length,5);
+	assertEqual(array.typeSize,sizeof(char));
+	for(counter=0;counter<array.length;counter++)
+		assertEqual(((char *)array.base)[counter],0);
 }
 
-void test_for_resize_an_existing_array_after_resizing_with_a_less_size(){
+void test__create_03__creat_returns_new_ArraUtil_of_specified_size_and_length_with_float_type_base_and_set_all_element_to_zero(){
+	int counter;
+	ArrayUtil array = create(sizeof(float),5);
+	assertEqual(array.length,5);
+	assertEqual(array.typeSize,sizeof(float));
+	for(counter=0;counter<array.length;counter++)
+		assertEqual(((float *)array.base)[counter],0);
+}
+
+void test__create_04__creat_returns_new_ArraUtil_of_specified_size_and_length_with_double_type_base_and_set_all_element_to_zero(){
+	int counter;
+	ArrayUtil array = create(sizeof(double),5);
+	assertEqual(array.length,5);
+	assertEqual(array.typeSize,sizeof(double));
+	for(counter=0;counter<array.length;counter++)
+		assertEqual(((double *)array.base)[counter],0);
+}
+
+void test__resize_01__for_resize_an_existing_int_array_after_resizing_with_a_less_size(){
 	ArrayUtil array = create(sizeof(int), 5);
 	ArrayUtil result_array;
 	((char *)array.base)[0]=2;
@@ -127,7 +143,7 @@ void test_for_resize_an_existing_array_after_resizing_with_a_less_size(){
 	assertEqual(((char *)result_array.base)[2],6);
 }
 
-void test_for_resize_an_existing_array_after_resizing_with_a_greater_size(){
+void test__resize_02__for_resize_an_existing_int_array_after_resizing_with_a_greater_size(){
 	ArrayUtil array = create(sizeof(int), 3);
 	ArrayUtil result_array;
 	((char *)array.base)[0]=2;
@@ -142,7 +158,22 @@ void test_for_resize_an_existing_array_after_resizing_with_a_greater_size(){
 	assertEqual(((char *)result_array.base)[4],0);
 }
 
-void test_findIndex_retruns_the_index_of_an_element_in_an_int_array(){
+void test__resize_03__for_resize_an_existing_char_array_after_resizing_with_a_less_size(){
+	ArrayUtil array = create(sizeof(char), 5);
+	ArrayUtil result_array;
+	((char *)array.base)[0]='a';
+	((char *)array.base)[1]='b';
+	((char *)array.base)[2]='c';
+	((char *)array.base)[3]='d';
+	((char *)array.base)[4]='e';
+	result_array = resize(array,3);
+	assertEqual(result_array.length, 3);
+	assertEqual(((char *)result_array.base)[0],'a');
+	assertEqual(((char *)result_array.base)[1],'b');
+	assertEqual(((char *)result_array.base)[2],'c');
+}
+
+void test__findIndex_01__findIndex_retruns_the_index_of_an_element_in_an_int_array(){
 	int index;
 	int element=5;
 	ArrayUtil array = create(sizeof(int),4);
@@ -155,7 +186,7 @@ void test_findIndex_retruns_the_index_of_an_element_in_an_int_array(){
 	assertEqual(index,2);
 }
 
-void test_findIndex_retruns_negative1_for_an_element_which_is_not_in_the_array(){
+void test__findIndex_02__findIndex_retruns_negative1_for_an_element_which_is_not_in_an_int_array(){
 	int index;
 	int element=2;
 	ArrayUtil array = create(sizeof(int),4);
@@ -168,9 +199,9 @@ void test_findIndex_retruns_negative1_for_an_element_which_is_not_in_the_array()
 	assertEqual(index,-1);
 }
 
-void test_findIndex_retruns_the_index_of_an_element_in_an_char_array(){
-	char array[]= {'a','b','c','d'};
-	char element ='c';
+void test__findIndex_03__findIndex_retruns_the_index_of_an_element_in_an_char_array(){
+	char array[]= "Surajit";
+	char element ='r';
 	int index;
 	ArrayUtil src;
 	src.base = array;
@@ -180,7 +211,19 @@ void test_findIndex_retruns_the_index_of_an_element_in_an_char_array(){
 	assertEqual(index,2);
 };
 
-void test_dispose_free_the_array(){
+void test__findIndex_04__findIndex_retruns_negative1_for_an_element_which_is_not_in_an_char_array(){
+	char array[]= "Surajit";
+	char element ='o';
+	int index;
+	ArrayUtil src;
+	src.base = array;
+	src.length = 4;
+	src.typeSize = sizeof(char);
+	index = findIndex(src,&element);
+	assertEqual(index,-1);
+};
+
+void test__dispose_01__dispose_free_the_array(){
 	ArrayUtil array = create(sizeof(int),2);
 	assertEqual(((int*)array.base)[0],0);
 	assertEqual(((int*)array.base)[1],0);
@@ -190,7 +233,12 @@ void test_dispose_free_the_array(){
 int isEven(void *hint,void *item){
 	return ((*((int*)item)%2)==0);
 }
-void test_findFirst_retruns_first_even_number_from_the_array(){
+
+int isDivisible(void* hint, void* item){
+	return ((*((int *)item)%*((int *)hint))==0);
+}
+
+void test__findFirst_01__findFirst_retruns_first_even_number_from_the_int_array(){
 	ArrayUtil array = create(sizeof(int),5);
 	int *result;
 	((int *)array.base)[0]=11;
@@ -202,7 +250,7 @@ void test_findFirst_retruns_first_even_number_from_the_array(){
  	assertEqual(*result,22);
 }
 
-void test_findFirst_retruns_NULL_if_no_element_is_a_even_number_in_array(){
+void test__findFirst_02__findFirst_retruns_NULL_if_no_element_is_a_even_number_in_an_int_array(){
 	ArrayUtil array = create(sizeof(int),6);
 	int *result;
 	((int *)array.base)[0]=11;
@@ -215,11 +263,8 @@ void test_findFirst_retruns_NULL_if_no_element_is_a_even_number_in_array(){
  	assertEqual((int)result,0);
 }
 
-int isDivisible(void* hint, void* item){
-	return ((*((int *)item)%*((int *)hint))==0);
-}
 
-void test_findFirst_retruns_first_element_which_is_divisible_by_5_in_array(){
+void test__findFirst_03__findFirst_retruns_first_element_which_is_divisible_by_5_in_int_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int *result;
 	int hint = 5;
@@ -231,7 +276,7 @@ void test_findFirst_retruns_first_element_which_is_divisible_by_5_in_array(){
  	assertEqual(*result,5);
 }
 
-void test_findFirst_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
+void test__findFirst_04__findFirst_retruns_NULL_if_no_element_is_divisible_by_5_in_int_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int *result;
 	int hint = 5;
@@ -243,7 +288,7 @@ void test_findFirst_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
  	assertEqual((int)result,0);
 }
 
-void test_findLast_retruns_last_even_number_from_the_array(){
+void test__findLast_01__findLast_retruns_last_even_number_from_the_int_array(){
 	ArrayUtil array = create(sizeof(int),5);
 	int *result;
 	((int *)array.base)[0]=11;
@@ -255,7 +300,7 @@ void test_findLast_retruns_last_even_number_from_the_array(){
  	assertEqual(*result,44);
 }
 
-void test_findLast_retruns_NULL_if_no_element_is_a_even_number_in_array(){
+void test__findLast_02__findLast_retruns_NULL_if_no_element_is_a_even_number_in_an_int_array(){
 	ArrayUtil array = create(sizeof(int),6);
 	int *result;
 	((int *)array.base)[0]=11;
@@ -268,7 +313,7 @@ void test_findLast_retruns_NULL_if_no_element_is_a_even_number_in_array(){
  	assertEqual((int)result,0);
 }
 
-void test_findLast_retruns_first_element_which_is_divisible_by_5_in_array(){
+void test__findLast_03__findLast_retruns_first_element_which_is_divisible_by_5_in_an_int_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int *result;
 	int hint = 5;
@@ -280,7 +325,7 @@ void test_findLast_retruns_first_element_which_is_divisible_by_5_in_array(){
  	assertEqual(*result,10);
 }
 
-void test_findLast_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
+void test__findLast_04__findLast_retruns_NULL_if_no_element_is_divisible_by_5_in_an_int_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int *result;
 	int hint = 5;
@@ -292,7 +337,7 @@ void test_findLast_retruns_NULL_if_no_element_is_divisible_by_5_in_array(){
  	assertEqual((int)result,0);
 }
 
-void test_count_retruns_2_if_two_even_numbers_are_present_in_the_array(){
+void test__count_01__count_retruns_2_if_two_even_numbers_are_present_in_the_int_array(){
 	ArrayUtil array = create(sizeof(int),5);
 	((int *)array.base)[0]=11;
 	((int *)array.base)[1]=22;
@@ -302,7 +347,7 @@ void test_count_retruns_2_if_two_even_numbers_are_present_in_the_array(){
  	assertEqual(count(array,isEven,0),2);
 }
 
-void test_count_retruns_0_if_no_even_number_is_present_in_the_array(){
+void test__count_02__count_retruns_0_if_no_even_number_is_present_in_the_int_array(){
 	ArrayUtil array = create(sizeof(int),5);
 	((int *)array.base)[0]=11;
 	((int *)array.base)[1]=33;
@@ -312,7 +357,7 @@ void test_count_retruns_0_if_no_even_number_is_present_in_the_array(){
  	assertEqual(count(array,isEven,0),0);
 }
 
-void test_count_retruns_3_if_three_elements_are_divisible_by_2_in_array(){
+void test__count_03__count_retruns_3_if_three_elements_are_divisible_by_2_in_an_int_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int hint = 2;
 	((int *)array.base)[0]=3;
@@ -322,7 +367,7 @@ void test_count_retruns_3_if_three_elements_are_divisible_by_2_in_array(){
  	assertEqual(count(array,isDivisible,&hint),3);
 }
 
-void test_count_retruns_0_if_no_elements_is_divisible_by_2_in_array(){
+void test__count_04__count_retruns_0_if_no_elements_is_divisible_by_2_in_an_int_array(){
 	ArrayUtil array = create(sizeof(int),4);
 	int hint = 2;
 	((int *)array.base)[0]=3;
