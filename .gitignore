@@ -7,4 +7,4 @@ arrayUtilTestRunner.c
 arrayUtilTestRunner.exe
 spike/run.sh
 spike/spike.exe
-spike/spike.o
+spike/spike.oexpr_assert.h

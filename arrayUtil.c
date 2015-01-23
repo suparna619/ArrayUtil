@@ -38,11 +38,13 @@ ArrayUtil resize(ArrayUtil util, int length){
 }
 
 int findIndex(ArrayUtil util, void* element){
-	char *e = (char *)element;
-	char *array = (char *)util.base;
-	for(counter = 0; counter < util.length*util.typeSize; counter = counter+util.typeSize){
-		if(array[counter] == *e)
-			return counter/util.typeSize;
+	int isMatching;
+	void *array_base = util.base;
+	for(counter = 0; counter < util.length; counter++){
+		isMatching = memcmp(array_base, element, util.typeSize);
+		array_base += (util.typeSize);
+		if(!isMatching)
+			return counter;
 	}
 	return -1;
 }
